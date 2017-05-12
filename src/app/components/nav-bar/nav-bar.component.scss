@@ -1,7 +1,7 @@
 @import '../../../styles';
 .tab-regular {
   border-width: 0px;
-  width: 129px;
+  width: 110px;
   height: 32px;
   font-size: 14px;
   color: #61646D;
@@ -13,11 +13,9 @@
   cursor: pointer;
 
 }
-
-
 .next-tab {
   background-color: $header-lightgray;
-  width: 80px;
+  width: 88px;
   height: 32px;
   font-size: 14px;
   color: #61646D;
@@ -26,27 +24,85 @@
   display: inline-block;
   margin: -2px;
   cursor: pointer;
-}
-
-.tab-expanded {
-  border-width: 0px;
-  width: 129px;
-  height: 32px;
-  font-size: 14px;
-  color: #61646D;
-  background-color: white;
-  text-align: center;
-  line-height: 32px;
-  display: inline-block;
-  margin: -2px;
-  cursor: pointer;
-}
-.tab-expanded:hover {
-  background-color: $selected-tab-blue;
-  color: white;
-
 }
 .tab-blue {
   background-color: $selected-tab-blue;
+  color: white;
+}
+
+
+.breadcrumb-arrow {
+  height: 32px;
+  padding: 0;
+  line-height: 32px;
+  list-style: none;
+  background-color: #F0F0F0;
+  width: 100%;
+}
+.breadcrumb-arrow li:first-child a {
+  border: 0;
+}
+.breadcrumb-arrow li, .breadcrumb-arrow li a, .breadcrumb-arrow li span {
+  display: inline-block;
+  vertical-align: top
+}
+.breadcrumb-arrow li:not(:first-child) {
+  margin-left: -5px
+}
+.breadcrumb-arrow li+li:before {
+  padding: 0;
+  content: ""
+}
+.breadcrumb-arrow li span {
+  padding: 0 10px
+}
+.breadcrumb-arrow li a, .breadcrumb-arrow li:not(:first-child) span {
+  height: 32px;
+  padding: 0 10px 0 25px;
+  line-height: 32px
+}
+.breadcrumb-arrow li:first-child a {
+  padding-left: 10px;
+}
+.breadcrumb-arrow li a {
+  position: relative;
+  color:#61646D;
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid white;
+  font-size: 14px;
+  height: 32px;
+}
+.breadcrumb-arrow li:first-child a {
+  padding-left: 10px
+}
+.breadcrumb-arrow li a:after, .breadcrumb-arrow li a:before {
+  position: absolute;
+  top: -1px;
+  width: 0;
+  height: 0;
+  content: '';
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent
+}
+.breadcrumb-arrow li a:before {
+  right: -10px;
+  z-index: 3;
+  border-left-color: white;
+  border-left-style: solid;
+  border-left-width: 11px
+}
+.breadcrumb-arrow li a:after {
+  right: -11px;
+  z-index: 2;
+  border-left: 11px solid $placeholder-gray;
+}
+.breadcrumb-arrow li a:focus {
+  background-color: $selected-tab-blue;
+  border: 1px solid $selected-tab-blue;
+  color: white;
+}
+.breadcrumb-arrow li a:focus:before {
+  border-left-color: $selected-tab-blue;
   color: white;
 }

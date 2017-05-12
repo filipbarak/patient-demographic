@@ -1,13 +1,19 @@
-<div *ngIf="expanded">
+<div *ngIf="expanded" class="full-shadow w-100">
 <div class="tab-regular">Patient Data</div>
 <div class="tab-regular">Related person</div>
 <div class="tab-regular">Consent</div>
 <div class="next-tab" (click)="click()">...</div>
 </div>
 
-<div *ngIf="!expanded">
-  <div class="tab-expanded" (click)="toggleHighlight(1)" [ngClass]="{'tab-blue': isActive===1}">Patient Data</div>
-  <div class="tab-expanded" (click)="toggleHighlight(2)" [ngClass]="{'tab-blue': isActive===2}">Related person</div>
-  <div class="tab-expanded" (click)="toggleHighlight(3)" [ngClass]="{'tab-blue': isActive===3}">Consent</div>
-  <div class="next-tab" (click)="click()">...</div>
-</div>
+<!--<div *ngIf="!expanded">-->
+  <!--<div class="tab-expanded" (click)="toggleHighlight(1)" [ngClass]="{'tab-blue': isActive===1}">Patient Data</div>-->
+  <!--<div class="tab-expanded" (click)="toggleHighlight(2)" [ngClass]="{'tab-blue': isActive===2}">Related person</div>-->
+  <!--<div class="tab-expanded" (click)="toggleHighlight(3)" [ngClass]="{'tab-blue': isActive===3}">Consent</div>-->
+  <!--<div class="next-tab" (click)="click()">...</div>-->
+<!--</div>-->
+<ol *ngIf="!expanded" class="breadcrumb full-shadow breadcrumb-arrow w-100" >
+  <li><a href="#">Patient data</a></li>
+  <li><a href="#">Related person</a></li>
+  <li><a href="#">Consent</a></li>
+  <div class="next-tab"  style="width: 25%" (click)="click()">...</div>
+</ol>
