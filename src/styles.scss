@@ -13,6 +13,8 @@ $placeholder-gray: #BCBCBC;
 $input-font-color: #333333;
 $selected-tab-blue: #2978CC;
 $confirm-button-green: #5EDB71;
+$footer-bgc: #F7F7F7;
+$border-color: #DEDEDE;
 
 //FORM FONTS
 $main-font: Lato-Regular;
@@ -107,6 +109,23 @@ color: $main-gray;
 
 }
 
+.circle {
+  background-color: $main-gray;
+  border-radius: 50%;
+}
+
+.shadow {
+  -webkit-box-shadow: 0 10px 4px -4px $border-color;
+  -moz-box-shadow: 0 10px 4px -4px $border-color;
+  box-shadow: 0 10px 4px -4px $border-color;
+}
+
+.full-shadow {
+  -webkit-box-shadow: 8px 8px 15px $border-color;
+  -moz-box-shadow: 8px 8px 15px $border-color;
+  box-shadow: 8px 8px 15px $border-color;
+}
+
 input, label, select {
   display: block;
 }
@@ -119,4 +138,5 @@ input, label, select {
   background-color: $confirm-button-green;
   color: white;
 }
+
 

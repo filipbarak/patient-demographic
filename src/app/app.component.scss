@@ -1,8 +1,63 @@
-@font-face {
-    font-family: Lato-Regular;
-    src: url("../assets/Lato-Regular.ttf")
+@import "../styles";
+
+.patient-picture {
+  @extend .circle;
+  @extend .large-font;
+
+  height: 60px;
+  width: 60px;
+  font-weight: bold;
+  color: white;
 }
 
-body {
-    font-family: Lato-Regular;
+.patient-name {
+  font-weight: $input-fontweight;
+}
+
+.patient-age {
+  font-weight: 300;
+}
+
+.large-font {
+  font-size: $heading-big-header-fontsize;
+}
+
+.patient-form-details {
+  min-height: 500px;
+}
+
+.template-header {
+  height: 30px;
+  background-color: $top-header-darkgrey;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: white;
+}
+
+.template-header-details {
+  @extend .shadow;
+
+}
+
+.header-content-left {
+  padding-left: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.header-content-right {
+  background-color: #DFE0E0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 10px;
+  padding: 1px 5px;
+  color: #787C87;
+  font-weight: 600;
+}
+
+.template-footer {
+  height: 50px;
+  background-color: $footer-bgc;
+  border-top: 1px solid $border-color;
 }
