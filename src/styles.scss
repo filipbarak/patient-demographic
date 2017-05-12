@@ -7,7 +7,7 @@
 
 //FORM COLORS
 $top-header-darkgrey: #787C87;
-$header-lightgray: #F0F0F0;
+$header-lightgray: #999999;
 $main-gray: #CCCCCC;
 $placeholder-gray: #BCBCBC;
 $input-font-color: #333333;
@@ -102,10 +102,14 @@ color: $main-gray;
 .large-heading {
   color: $header-lightgray;
   font-size: $heading-big-header-fontsize;
+  font-style: italic;
+  font-weight: 500;
 }
 .small-heading {
   color: $header-lightgray;
   font-size: $heading-small-fontsize;
+  font-style: italic;
+  font-weight: 500;
 
 }
 
