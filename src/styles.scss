@@ -1,0 +1,103 @@
+
+@font-face {
+  font-family: Lato-Regular;
+  src: url("../src/assets/Lato-Regular.ttf")
+}
+
+
+//FORM COLORS
+$top-header-darkgrey: #787C87;
+$header-lightgray: #F0F0F0;
+$main-gray: #CCCCCC;
+$placeholder-gray: #BCBCBC;
+$input-font-color: #333333;
+$selected-tab-blue: #2978CC;
+$confirm-button-green: #0E0E0E;
+
+//FORM FONTS
+$main-font: Lato-Regular;
+$label-fontsize: 12px;
+$placeholder-fontsize: 16px;
+$input-fontweight: 700;
+$input-fontsize: 16px;
+$heading-big-header-fontsize: 20px;
+$heading-small-fontsize: 14px;
+
+
+//FORM DOM SIZES
+$all-input-height: 32px;
+
+$large-input-width: 352px;
+$medium-input-width: 168px;
+$small-input-width: 80px;
+
+$button-width: 80px;
+$button-height: 30px;
+
+//MISC images
+
+$arrow-down: url(http://d2v8ggac1o0f6z.cloudfront.net/gsc/5TZG2L/c2/dc/f7/c2dcf7e2ec1241eb923f3a547aa92cf7/images/patient/u4569.png?token=6dcccdee0f1ab8bde560ce3f8b83d75d);
+$angel: url(http://d26uhratvi024l.cloudfront.net/gsc/5TZG2L/c2/dc/f7/c2dcf7e2ec1241eb923f3a547aa92cf7/images/patient/u5483.png?token=6acdce041cfefc6c9f52fbf4dab042cd);
+$paper: url(http://d26uhratvi024l.cloudfront.net/gsc/5TZG2L/c2/dc/f7/c2dcf7e2ec1241eb923f3a547aa92cf7/images/patient_demographic___consent/u11491.png?token=6cddcc1e095e2bba5391efe709613f3f);
+
+//MIXINS
+@mixin generic-input($width, $height) {
+  ::-webkit-input-placeholder {
+    font-size: $placeholder-fontsize;
+    font-style: italic;
+    color: $placeholder-gray;
+  }
+  ::-moz-placeholder {
+    font-size: $placeholder-fontsize;
+    font-style: italic;
+    color: $placeholder-gray;
+  }
+  :-ms-input-placeholder {
+    font-size: $placeholder-fontsize;
+    font-style: italic;
+    color: $placeholder-gray;
+
+  };
+  font-weight: $input-fontweight;
+  font-size: $input-fontsize;
+  width: $width;
+  height: $height;
+}
+
+//CLASSES
+
+body{
+font-family: $main-font;
+color: $main-gray;
+}
+
+.generic-label {
+  font-size: $label-fontsize;
+}
+
+.small-input {
+  @include generic-input($small-input-width, $all-input-height)
+}
+
+.medium-input {
+  @include generic-input($medium-input-width, $all-input-height)
+
+}
+.large-input {
+  @include generic-input($large-input-width, $all-input-height)
+
+}
+
+.large-heading {
+  color: $header-lightgray;
+  font-size: $heading-big-header-fontsize;
+}
+.small-heading {
+  color: $header-lightgray;
+  font-size: $heading-small-fontsize;
+
+}
+
+input, label, select {
+  display: block;
+}
