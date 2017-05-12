@@ -1,0 +1,52 @@
+@import '../../../styles';
+.tab-regular {
+  border-width: 0px;
+  width: 129px;
+  height: 32px;
+  font-size: 14px;
+  color: #61646D;
+  background-color: $main-gray;
+  text-align: center;
+  line-height: 32px;
+  display: inline-block;
+  margin: -2px;
+  cursor: pointer;
+
+}
+
+
+.next-tab {
+  background-color: $header-lightgray;
+  width: 80px;
+  height: 32px;
+  font-size: 14px;
+  color: #61646D;
+  text-align: center;
+  line-height: 32px;
+  display: inline-block;
+  margin: -2px;
+  cursor: pointer;
+}
+
+.tab-expanded {
+  border-width: 0px;
+  width: 129px;
+  height: 32px;
+  font-size: 14px;
+  color: #61646D;
+  background-color: white;
+  text-align: center;
+  line-height: 32px;
+  display: inline-block;
+  margin: -2px;
+  cursor: pointer;
+}
+.tab-expanded:hover {
+  background-color: $selected-tab-blue;
+  color: white;
+
+}
+.tab-blue {
+  background-color: $selected-tab-blue;
+  color: white;
+}

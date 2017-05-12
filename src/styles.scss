@@ -1,7 +1,7 @@
 
 @font-face {
   font-family: Lato-Regular;
-  src: url("../src/assets/Lato-Regular.ttf")
+  src: url("/src/assets/Lato-Regular.ttf")
 }
 
 
@@ -12,7 +12,7 @@ $main-gray: #CCCCCC;
 $placeholder-gray: #BCBCBC;
 $input-font-color: #333333;
 $selected-tab-blue: #2978CC;
-$confirm-button-green: #0E0E0E;
+$confirm-button-green: #5EDB71;
 
 //FORM FONTS
 $main-font: Lato-Regular;
@@ -64,6 +64,15 @@ $paper: url(http://d26uhratvi024l.cloudfront.net/gsc/5TZG2L/c2/dc/f7/c2dcf7e2ec1
   height: $height;
 }
 
+@mixin button() {
+  width: $button-width;
+  height: $button-height;
+  text-align: center;
+  font-size: 14px;
+  border-width: 0px;
+
+}
+
 //CLASSES
 
 body{
@@ -101,3 +110,13 @@ color: $main-gray;
 input, label, select {
   display: block;
 }
+.button {
+  @include button();
+
+}
+.green {
+  @include button();
+  background-color: $confirm-button-green;
+  color: white;
+}
+
