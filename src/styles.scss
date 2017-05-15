@@ -120,6 +120,20 @@ color: $main-gray;
   border-radius: 50%;
 }
 
+.patient-picture-wrapper {
+  background-color: #F0F0F0;
+  height: 80px;
+}
+
+.patient-picture {
+  @extend .circle;
+  font-size: $heading-big-header-fontsize;
+  height: 60px;
+  width: 60px;
+  font-weight: bold;
+  color: white;
+}
+
 .shadow {
   -webkit-box-shadow: 0 10px 4px -4px $border-color;
   -moz-box-shadow: 0 10px 4px -4px $border-color;
@@ -147,4 +161,27 @@ input, label, select {
   color: white;
 }
 
+.custom-input-border {
+  border: none;
+  border-bottom: 1px solid $main-gray;
+  border-radius: 0;
+}
 
+.form-control {
+  @extend .custom-input-border;
+  @extend .small-input;
+}
+
+select {
+  font-style: italic;
+  @extend .custom-input-border;
+}
+
+.add-class {
+  color: #3C7FC7;
+}
+
+input::placeholder {
+  color: pink;
+  font-style: italic;
+}

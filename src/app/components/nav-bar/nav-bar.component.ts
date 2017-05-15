@@ -1,32 +1,38 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
-    selector: 'app-nav-bar',
-    templateUrl: './nav-bar.component.html',
-    styleUrls: ['./nav-bar.component.scss']
+  selector: 'app-nav-bar',
+  templateUrl: './nav-bar.component.html',
+  styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-    expanded;
-    isActive;
+  expanded;
+  isActive;
 
-    constructor() {
-    }
+  @Output() selectedTab: EventEmitter<string> = new EventEmitter();
 
-    ngOnInit() {
-    }
+  constructor() {
+  }
 
-    click() {
-        this.expanded = !this.expanded;
-        console.log(this.expanded)
-    }
+  ngOnInit() {
+  }
 
-    toggleHighlight(newValue: number) {
-        if (this.isActive === newValue) {
-            this.isActive = 0;
-        }
-        else {
-            this.isActive = newValue;
-        }
+  click() {
+    this.expanded = !this.expanded;
+    console.log(this.expanded)
+  }
+
+  toggleHighlight(newValue: number) {
+    if (this.isActive === newValue) {
+      this.isActive = 0;
     }
+    else {
+      this.isActive = newValue;
+    }
+  }
+
+  selectTab(tab: string) {
+    this.selectedTab.next(tab)
+  }
 
 }

@@ -11,7 +11,7 @@
 
     </div>
 
-    <div style="background-color: #F0F0F0; height: 80px;" class="d-flex  pl-3 pr-4 template-header-details">
+    <div class="patient-picture-wrapper d-flex  pl-3 pr-4 template-header-details">
 
       <div class="patient-picture my-auto d-flex">
         <div class="my-auto mx-auto">NN</div>
@@ -24,10 +24,22 @@
         </div>
       </div>
     </div>
-    <app-nav-bar></app-nav-bar>
+    <app-nav-bar (selectedTab)="selectTab($event)"></app-nav-bar>
 
+    <!--Form Details-->
     <div class="patient-form-details">
-      <!--Form Details-->
+      <div *ngIf="activeTab == 'data'">
+        <!--Patient Data-->
+        <app-patient-data></app-patient-data>
+      </div>
+      <div *ngIf="activeTab == 'person'">
+        <!--Related Person-->
+        <app-related-person></app-related-person>
+      </div>
+      <div *ngIf="activeTab == 'consent'">
+        <!--Consent-->
+        <app-consent></app-consent>
+      </div>
     </div>
 
     <div class="template-footer d-flex justify-content-between">

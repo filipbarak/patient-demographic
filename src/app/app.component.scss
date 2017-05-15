@@ -1,25 +1,11 @@
 @import "../styles";
 
-.patient-picture {
-  @extend .circle;
-  @extend .large-font;
-
-  height: 60px;
-  width: 60px;
-  font-weight: bold;
-  color: white;
-}
-
 .patient-name {
   font-weight: $input-fontweight;
 }
 
 .patient-age {
   font-weight: 300;
-}
-
-.large-font {
-  font-size: $heading-big-header-fontsize;
 }
 
 .patient-form-details {
