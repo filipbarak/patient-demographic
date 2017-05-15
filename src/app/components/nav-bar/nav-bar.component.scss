@@ -1,7 +1,6 @@
 @import '../../../styles';
 .tab-regular {
   border-width: 0px;
-  width: 110px;
   height: 32px;
   font-size: 14px;
   color: #61646D;
@@ -11,11 +10,12 @@
   display: inline-block;
   margin: -2px;
   cursor: pointer;
+  width: 27%;
 
 }
 .next-tab {
   background-color: #F0F0F0;
-  width: 88px;
+  width: 19%;
   height: 32px;
   font-size: 14px;
   color: #61646D;
