@@ -185,3 +185,13 @@ label{
   color: $top-header-darkgrey
 
 }
+
+input[type=file] {
+  position: absolute;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
