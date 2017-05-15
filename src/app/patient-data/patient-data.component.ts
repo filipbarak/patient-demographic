@@ -4,7 +4,7 @@ import {FormArray, FormBuilder, FormControl, Validators} from "@angular/forms";
 @Component({
   selector: 'app-patient-data',
   templateUrl: './patient-data.component.html',
-  styleUrls: ['./patient-data.component.css']
+  styleUrls: ['./patient-data.component.scss']
 })
 export class PatientDataComponent implements OnInit {
 

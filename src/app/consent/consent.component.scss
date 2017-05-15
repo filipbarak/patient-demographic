@@ -1,0 +1,20 @@
+@import "../../styles";
+::-webkit-input-placeholder {
+    font-size: $placeholder-fontsize;
+    font-style: italic;
+    color: $placeholder-gray;
+    font-weight: 400;
+}
+::-moz-placeholder {
+    font-size: $placeholder-fontsize;
+    font-style: italic;
+    color: $placeholder-gray;
+    font-weight: 400;
+}
+:-ms-input-placeholder {
+    font-size: $placeholder-fontsize;
+    font-style: italic;
+    color: $placeholder-gray;
+    font-weight: 400;
+
+};

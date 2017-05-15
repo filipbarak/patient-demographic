@@ -180,8 +180,8 @@ select {
 .add-class {
   color: #3C7FC7;
 }
+label{
+  font-size: $label-fontsize;
+  color: $top-header-darkgrey
 
-input::placeholder {
-  color: pink;
-  font-style: italic;
 }

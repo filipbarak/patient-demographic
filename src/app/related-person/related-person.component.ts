@@ -4,7 +4,7 @@ import {FormArray, FormBuilder, Validators} from "@angular/forms";
 @Component({
   selector: 'app-related-person',
   templateUrl: './related-person.component.html',
-  styleUrls: ['./related-person.component.css']
+  styleUrls: ['./related-person.component.scss']
 })
 export class RelatedPersonComponent implements OnInit {
 
