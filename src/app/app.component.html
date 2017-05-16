@@ -24,17 +24,25 @@
         </div>
       </div>
     </div>
-    <app-nav-bar (selectedTab)="selectTab($event)"></app-nav-bar>
+    <app-nav-bar (selectedTab)="selectTab($event)" [validForms]="validForms"></app-nav-bar>
 
     <!--Form Details-->
     <div class="patient-form-details">
       <div *ngIf="activeTab == 'data'">
         <!--Patient Data-->
-        <app-patient-data></app-patient-data>
+        <app-patient-data
+          [defaultVlaues]="defaultValuesPDF"
+          (validPDF)="setValidityPDF($event)"
+          (valuesPDF)="setDefaultValuesPDF($event)">
+        </app-patient-data>
       </div>
-      <div *ngIf="activeTab == 'person'">
+      <div *ngIf="activeTab == 'person'" >
         <!--Related Person-->
-        <app-related-person></app-related-person>
+        <app-related-person
+          [defaultVlaues]="defaultValuesRPF"
+          (validRPF)="setValidityRPF($event)"
+          (valuesRPF)="setDefaultValuesRPF($event)">
+        </app-related-person>
       </div>
       <div *ngIf="activeTab == 'consent'">
         <!--Consent-->
@@ -45,11 +53,17 @@
     <div class="template-footer d-flex justify-content-between">
 
       <div class="my-auto float-left pl-3 ">
-        <a href="#">Back</a>
+        <a href="#" *ngIf="activeTab != 'data'" (click)="setBackActiveTab()">Back</a>
       </div>
       <div class="my-auto float-right pr-2">
         <button class="btn button">Cancel</button>
-        <button class="btn green">Next</button>
+        <button class="btn green"
+                *ngIf="activeTab!='consent'"
+                (click)="setNextActiveTab()"
+                [disabled]="activeTab=='data'
+                ? !validForms.patientDataForm
+                  : activeTab=='person' ? !validForms.relatedPersonForm
+                    : !validForms.patientDataForm && !validForms.relatedPersonForm">Next</button>
       </div>
     </div>
 

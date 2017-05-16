@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, Validators} from "@angular/forms";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormArray, FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-patient-data',
@@ -9,8 +9,12 @@ import {FormArray, FormBuilder, FormControl, Validators} from "@angular/forms";
 export class PatientDataComponent implements OnInit {
 
   patientDataForm;
+  // defaultVlaues={ "name": "Aleksadandar", "middleName": "", "lastName": "Mileski", "date": "1.1.1990", "gender": "0", "his": "1", "addresses": [ { "street": "pp", "postalCode": "111", "city": "pp", "country": "1" } ], "phones": [ { "phone": 38979000000 } ], "emails": [ { "email": "ace@gmail.com" } ] } ;
+  @Input() defaultVlaues: any={};
 
   genders = ['Male', 'Female'];
+  @Output() validPDF: EventEmitter<boolean> = new EventEmitter();
+  @Output() valuesPDF: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private fb: FormBuilder) {
   }
@@ -33,6 +37,16 @@ export class PatientDataComponent implements OnInit {
         this.initEmail(),
       ]),
     });
+
+    this.patientDataForm.patchValue(this.defaultVlaues)
+
+    this.patientDataForm.valueChanges.subscribe(()=>{
+      // this.defaultVlaues = this.patientDataForm.value ? this.defaultVlaues=this.patientDataForm.value : {};
+      if(this.patientDataForm.value){this.valuesPDF.next(this.patientDataForm.value)}
+      this.patientDataForm.valid
+        ? this.validPDF.next(true)
+        : this.validPDF.next(false);
+    })
   }
 
   initAddress() {
@@ -70,7 +84,7 @@ export class PatientDataComponent implements OnInit {
   }
 
   addEmail() {
-    // add phone to the list
+    // add email to the list
     const control = <FormArray>this.patientDataForm.controls['emails'];
     control.push(this.initEmail());
   }

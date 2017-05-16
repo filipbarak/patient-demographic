@@ -24,7 +24,7 @@
       <label class="center-block d-inline-block">Gender *
         <div class="d-flex">
           <select class="col-md-12 m-1 p-2" formControlName="gender">
-            <option value="0" selected>Select</option>
+            <option disabled selected value>Select</option>
             <option *ngFor="let g of genders;let i=index;" [value]="i">{{g}}</option>
           </select>
         </div>
@@ -52,7 +52,7 @@
             </div>
             <div class="d-flex">
               <select class="col-md-9 m-1 p-2" formControlName="country">
-                <option value="0" selected disabled>Country</option>
+                <option disabled selected value>Country</option>
                 <option value="1">SLO</option>
                 <option value="1">MKD</option>
                 <option value="2">US</option>
@@ -90,5 +90,6 @@
     </div>
 
   </div>
+  {{patientDataForm.value | json}}
   <!--<button type="submit" [disabled]="!patientDataForm.valid">Submit</button>-->
 </form>

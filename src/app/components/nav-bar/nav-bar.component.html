@@ -12,8 +12,8 @@
   <!--<div class="next-tab" (click)="click()">...</div>-->
 <!--</div>-->
 <ol *ngIf="!expanded" class="breadcrumb full-shadow breadcrumb-arrow w-100" >
-  <li><a (click)="selectTab('data')">Patient data</a></li>
-  <li><a (click)="selectTab('person')">Related person</a></li>
-  <li><a (click)="selectTab('consent')">Consent</a></li>
+  <li><a href="#" (click)="selectTab('data')">Patient data</a></li>
+  <li [ngClass]="{disabled: !validForms.patientDataForm}"><a href="#" (click)="selectTab('person')">Related person</a></li>
+  <li [ngClass]="{disabled: !validForms.relatedPersonForm}"><a href="#" (click)="selectTab('consent')">Consent</a></li>
   <div class="next-tab"  style="width: 25%" (click)="click()">...</div>
 </ol>

@@ -106,3 +106,8 @@
   border-left-color: $selected-tab-blue;
   color: white;
 }
+
+.disabled {
+  pointer-events:none; //This makes it not clickable
+  opacity:0.2;         //This grays it out to look disabled
+}

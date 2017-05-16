@@ -1,4 +1,4 @@
-<form [formGroup]="patientDataForm" novalidate>
+<form [formGroup]="relatedPersonForm" novalidate>
   <div class="d-flex">
     <div class="d-inline col-2 col-md-2 h-100">
       <div class="patient-picture mx-auto d-flex">
@@ -21,13 +21,13 @@
       <label class="center-block d-inline-block col-6 p-0 m-0">Relation *
         <div class="d-flex">
           <select class="col-md-12 m-1 p-2" formControlName="relation">
-            <option value="0" selected>Select</option>
+            <option selected disabled value>Select</option>
             <option *ngFor="let g of relations;let i=index;" [value]="i">{{g}}</option>
           </select>
         </div>
       </label>
       <div formArrayName="addresses">
-        <div *ngFor="let address of patientDataForm.controls.addresses.controls; let i=index">
+        <div *ngFor="let address of relatedPersonForm.controls.addresses.controls; let i=index">
           <label class="center-block"
                  [formGroupName]="i">Home Address {{i+1}} *
             <p class="d-inline col-sm-6 my-auto add-class text-right float-right m-0 p-0" (click)="addAddress()"
@@ -43,7 +43,7 @@
             </div>
             <div class="d-flex">
               <select class="col-md-9 m-1 p-2" formControlName="country">
-                <option value="0" selected disabled>Country</option>
+                <option selected disabled value>Country</option>
                 <option value="1">SLO</option>
                 <option value="1">MKD</option>
                 <option value="2">US</option>
@@ -53,7 +53,7 @@
         </div>
       </div>
       <div formArrayName="phones">
-        <div *ngFor="let phone of patientDataForm.controls.phones.controls; let i=index">
+        <div *ngFor="let phone of relatedPersonForm.controls.phones.controls; let i=index">
           <label class="center-block"
                  [formGroupName]="i">Mobile phone {{i+1}}*
             <p class="d-inline col-sm-6 my-auto add-class text-right float-right m-0 p-0" *ngIf="i==0"
@@ -66,7 +66,7 @@
         </div>
       </div>
       <div formArrayName="emails">
-        <div *ngFor="let email of patientDataForm.controls.emails.controls; let i=index">
+        <div *ngFor="let email of relatedPersonForm.controls.emails.controls; let i=index">
           <label class="center-block"
                  [formGroupName]="i">Personal email {{i+1}}
             <p class="d-inline col-sm-6 my-auto add-class text-right float-right m-0 p-0" *ngIf="i==0" (click)="addEmail()">+ Add another</p>
@@ -81,5 +81,4 @@
     </div>
 
   </div>
-  <!--<button type="submit" [disabled]="!patientDataForm.valid">Submit</button>-->
 </form>

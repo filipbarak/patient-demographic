@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, Validators} from "@angular/forms";
 
 @Component({
@@ -8,15 +8,20 @@ import {FormArray, FormBuilder, Validators} from "@angular/forms";
 })
 export class RelatedPersonComponent implements OnInit {
 
-  patientDataForm;
+  relatedPersonForm;
 
   relations = ['Parent', 'Partner','Family','Guardian','Friend','Caregiver','Work','Other'];
+
+  @Input() defaultVlaues: any={};
+
+  @Output() validRPF: EventEmitter<boolean> = new EventEmitter();
+  @Output() valuesRPF: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private fb: FormBuilder) {
   }
 
   ngOnInit() {
-    this.patientDataForm = this.fb.group({
+    this.relatedPersonForm = this.fb.group({
       name: ['', Validators.required],
       middleName: [''],
       lastName: ['', Validators.required],
@@ -31,6 +36,15 @@ export class RelatedPersonComponent implements OnInit {
         this.initEmail(),
       ]),
     });
+
+    this.relatedPersonForm.patchValue(this.defaultVlaues)
+
+    this.relatedPersonForm.valueChanges.subscribe(()=>{
+      if(this.relatedPersonForm.value){this.valuesRPF.next(this.relatedPersonForm.value)}
+      this.relatedPersonForm.valid
+        ? this.validRPF.next(true)
+        : this.validRPF.next(false);
+    })
   }
 
   initAddress() {
@@ -45,7 +59,7 @@ export class RelatedPersonComponent implements OnInit {
 
   addAddress() {
     // add address to the list
-    const control = <FormArray>this.patientDataForm.controls['addresses'];
+    const control = <FormArray>this.relatedPersonForm.controls['addresses'];
     control.push(this.initAddress());
   }
 
@@ -57,7 +71,7 @@ export class RelatedPersonComponent implements OnInit {
 
   addPhone() {
     // add phone to the list
-    const control = <FormArray>this.patientDataForm.controls['phones'];
+    const control = <FormArray>this.relatedPersonForm.controls['phones'];
     control.push(this.initPhone());
   }
 
@@ -69,7 +83,7 @@ export class RelatedPersonComponent implements OnInit {
 
   addEmail() {
     // add phone to the list
-    const control = <FormArray>this.patientDataForm.controls['emails'];
+    const control = <FormArray>this.relatedPersonForm.controls['emails'];
     control.push(this.initEmail());
   }
 
