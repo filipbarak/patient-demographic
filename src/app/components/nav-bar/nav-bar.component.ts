@@ -6,9 +6,10 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-  expanded;
   isActive;
+  expanded = false;
   @Input() validForms = {};
+  @Output() formExpanded:EventEmitter<boolean> = new EventEmitter();
   @Output() selectedTab: EventEmitter<string> = new EventEmitter();
 
   constructor() {
@@ -19,7 +20,9 @@ export class NavBarComponent implements OnInit {
 
   click() {
     this.expanded = !this.expanded;
-    console.log(this.expanded)
+    this.formExpanded.next(this.expanded);
+    console.log(this.expanded);
+    this.selectTab('data');
   }
 
   toggleHighlight(newValue: number) {
@@ -33,6 +36,16 @@ export class NavBarComponent implements OnInit {
 
   selectTab(tab: string) {
     this.selectedTab.next(tab)
+  }
+
+  checkEnabled(formName,validForms):boolean{
+    if(formName=='person'){
+      return !validForms.patientDataForm ;
+      // console.log(validForms)
+    }
+    if(formName=='consent'){
+      return !validForms.patientDataForm || !validForms.relatedPersonForm;
+    }
   }
 
 }

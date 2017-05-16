@@ -7,12 +7,12 @@ import {FormArray, FormBuilder, Validators} from "@angular/forms";
   styleUrls: ['./patient-data.component.scss']
 })
 export class PatientDataComponent implements OnInit {
-
   patientDataForm;
-  // defaultVlaues={ "name": "Aleksadandar", "middleName": "", "lastName": "Mileski", "date": "1.1.1990", "gender": "0", "his": "1", "addresses": [ { "street": "pp", "postalCode": "111", "city": "pp", "country": "1" } ], "phones": [ { "phone": 38979000000 } ], "emails": [ { "email": "ace@gmail.com" } ] } ;
-  @Input() defaultVlaues: any={};
+  @Input() expanded: boolean = false;
+  @Input() defaultVlaues: any = {};
 
   genders = ['Male', 'Female'];
+  martial = ['Married', 'Never Married', 'Domestic Partner', 'Divorced', 'Widowed', 'Unknown'];
   @Output() validPDF: EventEmitter<boolean> = new EventEmitter();
   @Output() valuesPDF: EventEmitter<boolean> = new EventEmitter();
 
@@ -26,6 +26,7 @@ export class PatientDataComponent implements OnInit {
       lastName: ['', Validators.required],
       date: ['', Validators.required],
       gender: ['', Validators.required],
+      martial: ['', Validators.required],
       his: ['', Validators.required],
       addresses: this.fb.array([
         this.initAddress(),
@@ -40,13 +41,15 @@ export class PatientDataComponent implements OnInit {
 
     this.patientDataForm.patchValue(this.defaultVlaues)
 
-    this.patientDataForm.valueChanges.subscribe(()=>{
+    this.patientDataForm.valueChanges.subscribe(() => {
       // this.defaultVlaues = this.patientDataForm.value ? this.defaultVlaues=this.patientDataForm.value : {};
-      if(this.patientDataForm.value){this.valuesPDF.next(this.patientDataForm.value)}
+      if (this.patientDataForm.value) {
+        this.valuesPDF.next(this.patientDataForm.value)
+      }
       this.patientDataForm.valid
         ? this.validPDF.next(true)
         : this.validPDF.next(false);
-    })
+    });
   }
 
   initAddress() {
@@ -87,5 +90,22 @@ export class PatientDataComponent implements OnInit {
     // add email to the list
     const control = <FormArray>this.patientDataForm.controls['emails'];
     control.push(this.initEmail());
+  }
+
+  fillExpandedForm() {
+    if (this.expanded) {
+      this.patientDataForm.setValue({
+        "name": "Mary",
+        "middleName": "",
+        "lastName": "Wilkinson",
+        "date": "1-Jul-1976",
+        "gender": "1",
+        "martial": "5",
+        "his": "123456789",
+        "addresses": [{"street": "46 Baker Street", "postalCode": "3465", "city": "London", "country": "2"}],
+        "phones": [{"phone": 563456017}],
+        "emails": [{"email": "wilkinson.marry@gmail.com"}]
+      });
+    }
   }
 }

@@ -8,12 +8,21 @@
     <div class="d-inline col-10 col-md-10 h-100">
       <label class="center-block generic-label">Patient Name*
         <div class="d-flex">
-          <input class="form-control col-6 d-inline-block m-1" placeholder="First name" formControlName="name">
+          <input (click)="fillExpandedForm()" class="form-control col-6 d-inline-block m-1" placeholder="First name"
+                 formControlName="name">
           <input class="form-control col-6 d-inline-block m-1" placeholder="Middle name (optional)"
                  formControlName="middleName">
         </div>
         <div class="d-flex">
           <input class="form-control col-6 d-inline-block m-1" placeholder="Last name" formControlName="lastName">
+        </div>
+      </label>
+      <label class="center-block d-inline-block col-6 m-0 p-0">Martial Status*
+        <div class="d-flex">
+          <select class="col-md-12 m-1 p-2" formControlName="gender">
+            <option disabled selected value>Select</option>
+            <option *ngFor="let status of martial;let i=index;" [value]="i">{{status}}</option>
+          </select>
         </div>
       </label>
       <label class="center-block d-inline-block col-6 m-0 p-0">Birth date*
@@ -78,7 +87,8 @@
         <div *ngFor="let email of patientDataForm.controls.emails.controls; let i=index">
           <label class="center-block"
                  [formGroupName]="i">Personal email {{i+1}}
-            <p class="d-inline col-sm-6 my-auto add-class text-right float-right m-0 p-0" *ngIf="i==0" (click)="addEmail()">+ Add another</p>
+            <p class="d-inline col-sm-6 my-auto add-class text-right float-right m-0 p-0" *ngIf="i==0"
+               (click)="addEmail()">+ Add another</p>
             <div class="d-flex">
               <input type="email" class="form-control col-6 d-inline-block m-1" placeholder="eMail address"
                      formControlName="email">
@@ -90,6 +100,5 @@
     </div>
 
   </div>
-  {{patientDataForm.value | json}}
-  <!--<button type="submit" [disabled]="!patientDataForm.valid">Submit</button>-->
+  <!--{{patientDataForm.value | json}}-->
 </form>

@@ -1,7 +1,7 @@
 <div *ngIf="expanded" class="full-shadow w-100">
-<div class="tab-regular">Patient Data</div>
-<div class="tab-regular">Related person</div>
-<div class="tab-regular">Consent</div>
+<div class="tab-regular" (click)="selectTab('data')">Patient Data</div>
+<div [ngClass]="{disabled: !validForms.patientDataForm}" class="tab-regular" (click)="selectTab('person')">Related person</div>
+<div [ngClass]="{disabled: !validForms.relatedPersonForm}" class="tab-regular" (click)="selectTab('consent')">Consent</div>
 <div class="next-tab" (click)="click()">...</div>
 </div>
 
@@ -13,7 +13,7 @@
 <!--</div>-->
 <ol *ngIf="!expanded" class="breadcrumb full-shadow breadcrumb-arrow w-100" >
   <li><a href="#" (click)="selectTab('data')">Patient data</a></li>
-  <li [ngClass]="{disabled: !validForms.patientDataForm}"><a href="#" (click)="selectTab('person')">Related person</a></li>
-  <li [ngClass]="{disabled: !validForms.relatedPersonForm}"><a href="#" (click)="selectTab('consent')">Consent</a></li>
+  <li [ngClass]="{disabled: checkEnabled('person',validForms)}"><a href="#" (click)="selectTab('person')">Related person</a></li>
+  <li [ngClass]="{disabled: checkEnabled('consent',validForms)}"><a href="#" (click)="selectTab('consent')">Consent</a></li>
   <div class="next-tab"  style="width: 25%" (click)="click()">...</div>
 </ol>

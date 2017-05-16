@@ -10,7 +10,7 @@
     <div class="d-inline col-10 col-md-10 h-100">
       <label class="center-block">Related person name*
         <div class="d-flex">
-          <input class="form-control col-6 d-inline-block m-1" placeholder="First name" formControlName="name">
+          <input (click)="fillExpandedForm()" class="form-control col-6 d-inline-block m-1" placeholder="First name" formControlName="name">
           <input class="form-control col-6 d-inline-block m-1" placeholder="Middle name (optional)"
                  formControlName="middleName">
         </div>
@@ -79,6 +79,7 @@
       </div>
 
     </div>
-
   </div>
+    <!--{{relatedPersonForm.value|json}}-->
 </form>
+

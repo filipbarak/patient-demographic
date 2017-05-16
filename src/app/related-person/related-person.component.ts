@@ -9,10 +9,11 @@ import {FormArray, FormBuilder, Validators} from "@angular/forms";
 export class RelatedPersonComponent implements OnInit {
 
   relatedPersonForm;
+  @Input() expanded: boolean = false;
 
-  relations = ['Parent', 'Partner','Family','Guardian','Friend','Caregiver','Work','Other'];
+  relations = ['Parent', 'Partner', 'Family', 'Guardian', 'Friend', 'Caregiver', 'Work', 'Other'];
 
-  @Input() defaultVlaues: any={};
+  @Input() defaultVlaues: any = {};
 
   @Output() validRPF: EventEmitter<boolean> = new EventEmitter();
   @Output() valuesRPF: EventEmitter<boolean> = new EventEmitter();
@@ -39,8 +40,10 @@ export class RelatedPersonComponent implements OnInit {
 
     this.relatedPersonForm.patchValue(this.defaultVlaues)
 
-    this.relatedPersonForm.valueChanges.subscribe(()=>{
-      if(this.relatedPersonForm.value){this.valuesRPF.next(this.relatedPersonForm.value)}
+    this.relatedPersonForm.valueChanges.subscribe(() => {
+      if (this.relatedPersonForm.value) {
+        this.valuesRPF.next(this.relatedPersonForm.value)
+      }
       this.relatedPersonForm.valid
         ? this.validRPF.next(true)
         : this.validRPF.next(false);
@@ -85,6 +88,20 @@ export class RelatedPersonComponent implements OnInit {
     // add phone to the list
     const control = <FormArray>this.relatedPersonForm.controls['emails'];
     control.push(this.initEmail());
+  }
+
+  fillExpandedForm() {
+    if (this.expanded) {
+      this.relatedPersonForm.setValue({
+        "name": "Elizabeth",
+        "middleName": "",
+        "lastName": "Conor",
+        "relation": "3",
+        "addresses": [{"street": "1 Chapel Hill", "postalCode": "123", "city": "London", "country": "2"}],
+        "phones": [{"phone": 502458789}],
+        "emails": [{"email": "elizabeth.conor@gmail.com"}]
+      })
+    }
   }
 
 }

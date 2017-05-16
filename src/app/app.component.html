@@ -24,7 +24,11 @@
         </div>
       </div>
     </div>
-    <app-nav-bar (selectedTab)="selectTab($event)" [validForms]="validForms"></app-nav-bar>
+    <app-nav-bar
+      [validForms]="validForms"
+      (selectedTab)="selectTab($event)"
+      (formExpanded)="toggleExpanded($event)">
+    </app-nav-bar>
 
     <!--Form Details-->
     <div class="patient-form-details">
@@ -32,16 +36,18 @@
         <!--Patient Data-->
         <app-patient-data
           [defaultVlaues]="defaultValuesPDF"
+          [expanded]="expanded"
           (validPDF)="setValidityPDF($event)"
-          (valuesPDF)="setDefaultValuesPDF($event)">
+          (valuesPDF)="setDefaultValuesPDF($event)" #pdf>
         </app-patient-data>
       </div>
-      <div *ngIf="activeTab == 'person'" >
+      <div *ngIf="activeTab == 'person'">
         <!--Related Person-->
         <app-related-person
           [defaultVlaues]="defaultValuesRPF"
+          [expanded]="expanded"
           (validRPF)="setValidityRPF($event)"
-          (valuesRPF)="setDefaultValuesRPF($event)">
+          (valuesRPF)="setDefaultValuesRPF($event)" #rpf>
         </app-related-person>
       </div>
       <div *ngIf="activeTab == 'consent'">
@@ -58,14 +64,14 @@
       <div class="my-auto float-right pr-2">
         <button class="btn button">Cancel</button>
         <button class="btn green"
-                *ngIf="activeTab!='consent'"
                 (click)="setNextActiveTab()"
                 [disabled]="activeTab=='data'
                 ? !validForms.patientDataForm
                   : activeTab=='person' ? !validForms.relatedPersonForm
-                    : !validForms.patientDataForm && !validForms.relatedPersonForm">Next</button>
+                    : !validForms.patientDataForm && !validForms.relatedPersonForm">
+          {{activeTab=='consent'?'Finish':'Next'}}
+        </button>
       </div>
     </div>
-
   </div>
 </div>
