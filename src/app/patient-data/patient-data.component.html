@@ -19,7 +19,7 @@
       </label>
       <label class="center-block d-inline-block col-6 m-0 p-0">Martial Status*
         <div class="d-flex">
-          <select class="col-md-12 m-1 p-2" formControlName="gender">
+          <select class="col-md-12 m-1 p-2" formControlName="martial">
             <option disabled selected value>Select</option>
             <option *ngFor="let status of martial;let i=index;" [value]="i">{{status}}</option>
           </select>

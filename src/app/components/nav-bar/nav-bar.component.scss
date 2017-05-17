@@ -111,3 +111,22 @@
   pointer-events:none; //This makes it not clickable
   opacity:0.2;         //This grays it out to look disabled
 }
+
+.extended-div {
+  width: 216px;
+  height: 40px;
+  background-color: #F0F0F0;
+  color: #61646D;
+  @extend .full-shadow;
+  z-index: 10000;
+  position: absolute;
+  top: 150px;
+  text-align: center;
+  right: 5px;
+  padding-top: 5px;
+  cursor: pointer;
+}
+.extended-div-checkmark {
+  @extend .extended-div;
+  background: #F0F0F0 url('http://d26uhratvi024l.cloudfront.net/gsc/5TZG2L/0e/62/3f/0e623f6131984331945b2dce45418340/images/patient/u5188.png?token=718bb5544c4381290351f99fe665f4dd') no-repeat  left !important;
+}

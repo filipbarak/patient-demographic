@@ -11,6 +11,8 @@ export class NavBarComponent implements OnInit {
   @Input() validForms = {};
   @Output() formExpanded:EventEmitter<boolean> = new EventEmitter();
   @Output() selectedTab: EventEmitter<string> = new EventEmitter();
+  shownExpanded;
+  shownNotExpanded;
 
   constructor() {
   }
@@ -18,12 +20,34 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
   }
 
-  click() {
-    this.expanded = !this.expanded;
+  clickExpanded() {
+    //this.expanded = !this.expanded;
     this.formExpanded.next(this.expanded);
     console.log(this.expanded);
     this.selectTab('data');
+    this.shownExpanded = !this.shownExpanded;
   }
+  clickNotExpanded() {
+    //this.expanded = !this.expanded;
+    this.formExpanded.next(this.expanded);
+    console.log(this.expanded);
+    this.selectTab('data');
+    this.shownNotExpanded = !this.shownNotExpanded;
+  }
+  expandFormsActive(){
+    this.expanded = !this.expanded;
+    this.shownExpanded = !this.shownExpanded;
+    this.shownNotExpanded = this.shownExpanded
+
+
+  }
+  expandFormsNotActive(){
+    this.expanded = !this.expanded;
+    this.shownNotExpanded = !this.shownNotExpanded
+    this.shownExpanded = this.shownNotExpanded
+
+  }
+
 
   toggleHighlight(newValue: number) {
     if (this.isActive === newValue) {
