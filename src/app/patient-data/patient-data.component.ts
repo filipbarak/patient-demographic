@@ -68,7 +68,7 @@ export class PatientDataComponent implements OnInit {
     control.push(this.initAddress());
   }
 
-  private initPhone() {
+  initPhone() {
     return this.fb.group({
       phone: ['', Validators.required],
     });
@@ -80,7 +80,7 @@ export class PatientDataComponent implements OnInit {
     control.push(this.initPhone());
   }
 
-  private initEmail() {
+  initEmail() {
     return this.fb.group({
       email: ['', Validators.required],
     });

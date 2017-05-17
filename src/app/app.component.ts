@@ -1,7 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, EventEmitter, NgZone, Output, ViewChild} from '@angular/core';
-import {PatientDataComponent} from "./patient-data/patient-data.component";
-import {RelatedPersonComponent} from "./related-person/related-person.component";
-import {expand} from "rxjs/operator/expand";
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +17,7 @@ export class AppComponent {
 
   private validForms = {patientDataForm: false, relatedPersonForm: false, consent: false};
 
-  constructor(private zone: NgZone, private cd: ChangeDetectorRef) {
+  constructor() {
 
   };
 
@@ -33,7 +30,7 @@ export class AppComponent {
     this.defaultValuesPDF = {};
     this.defaultValuesRPF = {};
     if (this.expanded == false) {
-      this.validForms = {patientDataForm: false, relatedPersonForm: false, consent: false};
+      // this.validForms = {patientDataForm: false, relatedPersonForm: false, consent: false};
     }
   }
 
@@ -50,7 +47,6 @@ export class AppComponent {
   }
 
   setValidityPDF(validValue) {
-
     this.validForms.patientDataForm = validValue;
   }
 
